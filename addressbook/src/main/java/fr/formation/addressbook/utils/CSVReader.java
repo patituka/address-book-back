@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class CSVReader {
 
-    private static final String CSVFile = "/addressbook/src/main/resources/META-INF/laposte_hexasmal.csv";
+    private static final String CSVFile = "C:\\Users\\Administrateur\\git\\AddressBookBack\\addressbook\\src\\main\\resources\\META-INF\\laposte_hexasmal.csv";
 
     public static void main(String[] args) {
 
