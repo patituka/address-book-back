@@ -37,12 +37,15 @@ public class Address extends AbstractEntity{
 	}
 
 	public Address() {	}
-	
-	
-    
-  
-	
-	
-	
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Address [commune=");
+		builder.append(commune);
+		builder.append(", codePostal=");
+		builder.append(codePostal);
+		builder.append("]");
+		return builder.toString();
+	}
 }
