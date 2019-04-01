@@ -9,27 +9,36 @@ public class Address extends AbstractEntity{
 	 */
 	private static final long serialVersionUID = -6209937263508364485L;
 
-	@Column(length = 100, nullable = false)
-	private String nomCommune;
+	@Column(name = "Nom_commune", length = 100, nullable = false)
+	private String commune;
     
-    @Column(length = 100, nullable = false)
-	private String CodePostal;
+    @Column(name = "Code_postal", length = 100, nullable = false)
+	private String codePostal;
 
 	public String getNomCommune() {
-		return nomCommune;
+		return commune;
 	}
 
 	public void setNomCommune(String nomCommune) {
-		this.nomCommune = nomCommune;
+		this.commune = nomCommune;
 	}
 
 	public String getCodePostal() {
-		return CodePostal;
+		return codePostal;
 	}
 
 	public void setCodePostal(String codePostal) {
-		CodePostal = codePostal;
+		this.codePostal = codePostal;
 	}
+
+	public Address(String commune, String codePostal) {
+		this.commune = commune;
+		this.codePostal = codePostal;
+	}
+
+	public Address() {	}
+	
+	
     
   
 	
