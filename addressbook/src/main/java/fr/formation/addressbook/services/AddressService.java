@@ -1,4 +1,4 @@
-package fr.formation.services;
+package fr.formation.addressbook.services;
 
 import java.util.List;
 
