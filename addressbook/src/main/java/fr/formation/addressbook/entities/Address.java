@@ -2,6 +2,8 @@ package fr.formation.addressbook.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 @Entity
 public class Address extends AbstractEntity {
@@ -11,6 +13,10 @@ public class Address extends AbstractEntity {
 	 */
 	private static final long serialVersionUID = -5931394981912500386L;
 
+	@Column( nullable = false)	
+    @Enumerated(EnumType.STRING)
+    private Types types;
+	
 	@Column(name="identity", length = 38, nullable = false) 
 	private String identity;
 	
@@ -31,6 +37,16 @@ public class Address extends AbstractEntity {
 	
 	@Column(name= "locality", length= 38,nullable = false)
 	private String locality;
+	
+	
+
+	public Types getTypes() {
+		return types;
+	}
+
+	public void setTypes(Types types) {
+		this.types = types;
+	}
 
 	public String getIdentity() {
 		return identity;
@@ -92,8 +108,10 @@ public class Address extends AbstractEntity {
 		
 	}
 
-	public Address(String identity, String identification, String localisationComplement, String label,
+	public Address(Types types, String identity, String identification, String localisationComplement, String label,
 			String distributionServices, String zipCode, String locality) {
+		super();
+		this.types = types;
 		this.identity = identity;
 		this.identification = identification;
 		this.localisationComplement = localisationComplement;
@@ -106,7 +124,9 @@ public class Address extends AbstractEntity {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Addresses [identity=");
+		builder.append("Address [types=");
+		builder.append(types);
+		builder.append(", identity=");
 		builder.append(identity);
 		builder.append(", identification=");
 		builder.append(identification);
@@ -123,6 +143,9 @@ public class Address extends AbstractEntity {
 		builder.append("]");
 		return builder.toString();
 	}
+
+	
+	
 	
 	
 
