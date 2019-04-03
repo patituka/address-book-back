@@ -8,19 +8,19 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import fr.formation.addressbook.entities.Address;
+import fr.formation.addressbook.entities.Locality;
 
 public class CsvReader {
 
-    public static List<Address> readCsvFile(String path) {
-	List<Address> addresses = new ArrayList<>();
+    public static List<Locality> readCsvFile(String path) {
+	List<Locality> addresses = new ArrayList<>();
 	Path pathToFile = Paths.get(path);
 	try (BufferedReader br = Files.newBufferedReader(pathToFile,
 		StandardCharsets.UTF_8)) {
 	    String line = br.readLine();
 	    while (line != null) {
 		String[] att = line.split(";");
-		Address address = createAddress(att);
+		Locality address = createAddress(att);
 		addresses.add(address);
 		line = br.readLine();
 	    }
@@ -31,9 +31,9 @@ public class CsvReader {
 	// return addresses.subList(1, addresses.size());
     }
 
-    private static Address createAddress(String[] data) {
+    private static Locality createAddress(String[] data) {
 	String codePostal = data[1];
 	String commune = data[2];
-	return new Address(codePostal, commune);
+	return new Locality(codePostal, commune);
     }
 }

@@ -7,7 +7,7 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.validator.constraints.UniqueElements;
 
 @Entity
-public class Address extends AbstractEntity{
+public class Locality extends AbstractEntity{
     
     /**
 	 * 
@@ -37,12 +37,12 @@ public class Address extends AbstractEntity{
 		this.codePostal = codePostal;
 	}
 
-	public Address(String codePostal, String nomCommune) {
+	public Locality(String codePostal, String nomCommune) {
 		this.nomCommune = nomCommune;
 		this.codePostal = codePostal;
 	}
 
-	public Address() {	}
+	public Locality() {	}
 
 	@Override
 	public String toString() {

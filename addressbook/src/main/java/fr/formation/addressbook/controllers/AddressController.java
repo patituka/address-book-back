@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.formation.addressbook.services.AddressService;
+import fr.formation.addressbook.services.LocalityService;
 
 @SuppressWarnings("javadoc")
 @RestController
@@ -14,7 +14,7 @@ import fr.formation.addressbook.services.AddressService;
 public class AddressController {
 
     @Autowired
-    public AddressService service;
+    public LocalityService service;
 
     @GetMapping("/save")
     public ResponseEntity<Boolean> saveCsvData() {

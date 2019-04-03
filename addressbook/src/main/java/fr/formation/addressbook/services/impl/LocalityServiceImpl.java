@@ -9,18 +9,18 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.addressbook.Utils.CsvProperties;
 import fr.formation.addressbook.Utils.CsvReader;
-import fr.formation.addressbook.entities.Address;
-import fr.formation.addressbook.repositories.AddressRepository;
-import fr.formation.addressbook.services.AddressService;
+import fr.formation.addressbook.entities.Locality;
+import fr.formation.addressbook.repositories.LocalityRepository;
+import fr.formation.addressbook.services.LocalityService;
 
 /**
  * @author Administrateur
  */
 @Service
-public class AddressServiceImpl implements AddressService {
+public class LocalityServiceImpl implements LocalityService {
 
     @Autowired
-    private AddressRepository repository;
+    private LocalityRepository repository;
 
     @Autowired
     private CsvProperties properties;
@@ -28,7 +28,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public ResponseEntity<Boolean> saveAll() {
 	repository.deleteAll();
-	List<Address> addresses = repository
+	List<Locality> addresses = repository
 		.saveAll(CsvReader.readCsvFile(properties.getCsvUrl()));
 	return !addresses.isEmpty()
 		? new ResponseEntity<>(true, HttpStatus.CREATED)

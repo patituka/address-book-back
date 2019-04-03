@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 /**
  * @author Administrateur
  */
-public interface AddressService {
+public interface LocalityService {
 
     ResponseEntity<Boolean> saveAll();
 }
