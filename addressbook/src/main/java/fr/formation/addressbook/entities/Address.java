@@ -1,60 +1,57 @@
 package fr.formation.addressbook.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.UniqueConstraint;
 
-import org.hibernate.annotations.Columns;
+import org.hibernate.validator.constraints.UniqueElements;
 
-public class Address {
-	
-    @Column(length = 100, nullable = false)
-	private String codeCommuneINSEE;
+@Entity
+public class Address extends AbstractEntity{
     
-    @Column(length = 100, nullable = false)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6209937263508364485L;
+
+	
+	@Column(name = "Nom_commune", length = 100, nullable = false)
 	private String nomCommune;
     
-    @Column(length = 100, nullable = false)
-	private String CodePostal;
-    
-    @Column(length = 100, nullable = false)
-	private String libelle;
-    
-    @Column(length = 100, nullable = false)
-	private String coordonneesGPS;
-	
-	
-	
-	public String getCodeCommuneINSEE() {
-		return codeCommuneINSEE;
-	}
-	public void setCodeCommuneINSEE(String codeCommuneINSEE) {
-		this.codeCommuneINSEE = codeCommuneINSEE;
-	}
+    @Column(name = "Code_postal", length = 100, nullable = false)
+	private String codePostal;
+
 	public String getNomCommune() {
 		return nomCommune;
 	}
+
 	public void setNomCommune(String nomCommune) {
 		this.nomCommune = nomCommune;
 	}
-	public String getCodePostal() {
-		return CodePostal;
-	}
-	public void setCodePostal(String codePostal) {
-		CodePostal = codePostal;
-	}
-	public String getLibelle() {
-		return libelle;
-	}
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
-	}
-	public String getCoordonneesGPS() {
-		return coordonneesGPS;
-	}
-	public void setCoordonneesGPS(String coordonneesGPS) {
-		this.coordonneesGPS = coordonneesGPS;
-	}
-	
-	
-	
 
+	public String getCodePostal() {
+		return codePostal;
+	}
+
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
+	}
+
+	public Address(String codePostal, String nomCommune) {
+		this.nomCommune = nomCommune;
+		this.codePostal = codePostal;
+	}
+
+	public Address() {	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Address [commune=");
+		builder.append(nomCommune);
+		builder.append(", codePostal=");
+		builder.append(codePostal);
+		builder.append("]");
+		return builder.toString();
+	}
 }
