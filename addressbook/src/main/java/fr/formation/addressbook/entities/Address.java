@@ -1,7 +1,12 @@
 package fr.formation.addressbook.entities;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.UniqueConstraint;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
+@Entity
 public class Address extends AbstractEntity{
     
     /**
@@ -9,18 +14,19 @@ public class Address extends AbstractEntity{
 	 */
 	private static final long serialVersionUID = -6209937263508364485L;
 
+	
 	@Column(name = "Nom_commune", length = 100, nullable = false)
-	private String commune;
+	private String nomCommune;
     
     @Column(name = "Code_postal", length = 100, nullable = false)
 	private String codePostal;
 
 	public String getNomCommune() {
-		return commune;
+		return nomCommune;
 	}
 
 	public void setNomCommune(String nomCommune) {
-		this.commune = nomCommune;
+		this.nomCommune = nomCommune;
 	}
 
 	public String getCodePostal() {
@@ -31,8 +37,8 @@ public class Address extends AbstractEntity{
 		this.codePostal = codePostal;
 	}
 
-	public Address(String commune, String codePostal) {
-		this.commune = commune;
+	public Address(String codePostal, String nomCommune) {
+		this.nomCommune = nomCommune;
 		this.codePostal = codePostal;
 	}
 
@@ -42,7 +48,7 @@ public class Address extends AbstractEntity{
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Address [commune=");
-		builder.append(commune);
+		builder.append(nomCommune);
 		builder.append(", codePostal=");
 		builder.append(codePostal);
 		builder.append("]");
