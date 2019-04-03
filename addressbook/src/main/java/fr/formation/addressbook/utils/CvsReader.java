@@ -29,7 +29,7 @@ public class CvsReader {
 		 } catch (IOException e) {
 			e.printStackTrace();
 		}	
-		return addresses.subList(1, addresses.size());	
+		return addresses;	
 	}
 	
 	private static Address createAddress(String[] data) {
