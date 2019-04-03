@@ -4,14 +4,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
-public class Addresses extends AbstractEntity {
+public class Address extends AbstractEntity {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5931394981912500386L;
 
-	@Column(name="Identity", length = 38, nullable = false) 
+	@Column(name="identity", length = 38, nullable = false) 
 	private String identity;
 	
 	@Column(name= "identification", length= 38,nullable = false)
@@ -88,11 +88,11 @@ public class Addresses extends AbstractEntity {
 		this.locality = locality;
 	}
 
-	public Addresses() {
+	public Address() {
 		
 	}
 
-	public Addresses(String identity, String identification, String localisationComplement, String label,
+	public Address(String identity, String identification, String localisationComplement, String label,
 			String distributionServices, String zipCode, String locality) {
 		this.identity = identity;
 		this.identification = identification;
