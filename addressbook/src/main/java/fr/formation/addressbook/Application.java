@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import fr.formation.addressbook.Utils.CsvProperties;
-import fr.formation.addressbook.Utils.CvsReader;
 import fr.formation.addressbook.repositories.AddressRepository;
+import fr.formation.addressbook.utils.CsvProperties;
+import fr.formation.addressbook.utils.CvsReader;
 
 /**
  * @author Administrateur
