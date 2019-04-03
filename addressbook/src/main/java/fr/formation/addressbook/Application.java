@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import fr.formation.addressbook.repositories.AddressRepository;
+import fr.formation.addressbook.repositories.LocalityRepository;
 import fr.formation.addressbook.utils.CsvProperties;
 import fr.formation.addressbook.utils.CvsReader;
 
@@ -34,7 +34,7 @@ public class Application {
     public class DbInit {
 
 	@Autowired
-	private AddressRepository repository;
+	private LocalityRepository repository;
 
 	@Autowired
 	private CsvProperties properties;

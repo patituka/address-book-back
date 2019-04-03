@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.formation.addressbook.entities.Address;
-import fr.formation.addressbook.services.AddressService;
+import fr.formation.addressbook.entities.Locality;
+import fr.formation.addressbook.services.LocalityService;
 
 @SuppressWarnings("javadoc")
 @RestController
 @RequestMapping("/address")
-public class AddressController {
+public class LocalityController {
 
     @Autowired
-    public AddressService service;
+    public LocalityService service;
 
     @GetMapping("/all")
-    public List<Address> getAll() {
+    public List<Locality> getAll() {
 	return service.findAll();
     }
 }
