@@ -1,11 +1,11 @@
 package fr.formation.addressbook.services;
 
-import java.util.List;
+import org.springframework.http.ResponseEntity;
 
-import fr.formation.addressbook.entities.Address;
-
+/**
+ * @author Administrateur
+ */
 public interface AddressService {
-	
-	List<Address> findAll();
 
+    ResponseEntity<Boolean> saveAll();
 }
