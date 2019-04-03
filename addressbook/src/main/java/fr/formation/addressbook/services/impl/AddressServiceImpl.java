@@ -24,7 +24,6 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public List<Address> findAll() {
 	List<Address> addresses = repository.findAll();
-	System.out.println(addresses);
 	return addresses;
     }
 }

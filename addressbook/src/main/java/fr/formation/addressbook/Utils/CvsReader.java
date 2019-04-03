@@ -33,8 +33,8 @@ public class CvsReader {
 	}
 	
 	private static Address createAddress(String[] data) {
-		String codePostal = data[1];
-		String commune = data[2];
+		String codePostal = data[2];
+		String commune = data[3];
 		return new Address(codePostal, commune);
 		
 	}
