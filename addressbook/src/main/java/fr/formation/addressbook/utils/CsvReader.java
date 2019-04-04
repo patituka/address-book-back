@@ -17,8 +17,8 @@ public class CsvReader {
 	Path pathToFile = Paths.get(path);
 	try (BufferedReader br = Files.newBufferedReader(pathToFile,
 		StandardCharsets.UTF_8)) {
+		br.readLine();
 	    String line = br.readLine();
-	    br.readLine();
 	    while (line != null) {
 			String[] att = line.split(";");
 			Locality address = createAddress(att);
