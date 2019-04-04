@@ -32,8 +32,8 @@ public class CsvReader {
     }
 
     private static Locality createAddress(String[] data) {
-	String codePostal = data[1];
-	String commune = data[2];
+	String codePostal = data[2];
+	String commune = data[3];
 	return new Locality(codePostal, commune);
     }
 }
