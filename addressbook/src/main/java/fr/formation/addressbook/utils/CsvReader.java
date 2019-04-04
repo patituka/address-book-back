@@ -1,4 +1,4 @@
-package fr.formation.addressbook.Utils;
+package fr.formation.addressbook.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,6 +17,7 @@ public class CsvReader {
 	Path pathToFile = Paths.get(path);
 	try (BufferedReader br = Files.newBufferedReader(pathToFile,
 		StandardCharsets.UTF_8)) {
+		br.readLine();
 	    String line = br.readLine();
 	    while (line != null) {
 		String[] att = line.split(";");

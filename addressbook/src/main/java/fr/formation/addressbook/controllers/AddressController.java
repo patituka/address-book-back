@@ -11,7 +11,7 @@ import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.services.AddressService;
 
 @RestController
-@RequestMapping("/addresses")
+@RequestMapping("/address")
 public class AddressController {
 
     private final AddressService service;
@@ -20,8 +20,8 @@ public class AddressController {
 	this.service = service;
     }
 
-    @PostMapping("/particular")
-    protected void create(@Valid @RequestBody AddressDto addressPart) {
-	service.create(addressPart);
+    @PostMapping
+    protected void create(@Valid @RequestBody AddressDto address) {
+	service.create(address);
     }
 }

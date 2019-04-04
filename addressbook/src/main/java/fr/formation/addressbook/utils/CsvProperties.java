@@ -1,4 +1,4 @@
-package fr.formation.addressbook.Utils;
+package fr.formation.addressbook.utils;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;

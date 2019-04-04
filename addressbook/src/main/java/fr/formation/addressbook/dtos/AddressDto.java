@@ -1,110 +1,106 @@
 package fr.formation.addressbook.dtos;
 
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.entities.Types;
 
-
 public class AddressDto {
-	
-	private Types types  ;
-	
-	@NotBlank @NotNull
-	private String identity;
-	
-	@NotBlank @NotNull
-	private String identification;
-	
-	
-	private String localisationComplement;
-	
-	@NotBlank @NotNull
-	private String label;
-	
-	
-	private String distributionServices;
-	
 
-	private String zipCode;
-	
-	
-	private String locality;
+    private Types type;
 
-	public AddressDto() {
-		
-	}
+    @NotBlank
+    @NotNull
+    private String identity;
 
-	public Types getTypes() {
-		return types;
-	}
+    @NotBlank
+    @NotNull
+    private String identification;
 
-	public void setTypes(Types types) {
-		this.types = types;
-	}
+    private String localisationComplement;
 
-	public String getIdentity() {
-		return identity;
-	}
+    @NotBlank
+    @NotNull
+    private String label;
 
-	public void setIdentity(String identity) {
-		this.identity = identity;
-	}
+    private String distributionServices;
 
-	public String getIdentification() {
-		return identification;
-	}
+    private Locality locality;
 
-	public void setIdentification(String identification) {
-		this.identification = identification;
-	}
+    public AddressDto() {
+    }
 
-	public String getLocalisationComplement() {
-		return localisationComplement;
-	}
+    public Types getType() {
+	return type;
+    }
 
-	public void setLocalisationComplement(String localisationComplement) {
-		this.localisationComplement = localisationComplement;
-	}
+    public void setType(Types type) {
+	this.type = type;
+    }
 
-	public String getLabel() {
-		return label;
-	}
+    public String getIdentity() {
+	return identity;
+    }
 
-	public void setLabel(String label) {
-		this.label = label;
-	}
+    public void setIdentity(String identity) {
+	this.identity = identity;
+    }
 
-	public String getDistributionServices() {
-		return distributionServices;
-	}
+    public String getIdentification() {
+	return identification;
+    }
 
-	public void setDistributionServices(String distributionServices) {
-		this.distributionServices = distributionServices;
-	}
+    public void setIdentification(String identification) {
+	this.identification = identification;
+    }
 
-	public String getZipCode() {
-		return zipCode;
-	}
+    public String getLocalisationComplement() {
+	return localisationComplement;
+    }
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
+    public void setLocalisationComplement(String localisationComplement) {
+	this.localisationComplement = localisationComplement;
+    }
 
-	public String getLocality() {
-		return locality;
-	}
+    public String getLabel() {
+	return label;
+    }
 
-	public void setLocality(String locality) {
-		this.locality = locality;
-	}
-	
-	
-	
-	
-	
-	
-	
+    public void setLabel(String label) {
+	this.label = label;
+    }
 
+    public String getDistributionServices() {
+	return distributionServices;
+    }
+
+    public void setDistributionServices(String distributionServices) {
+	this.distributionServices = distributionServices;
+    }
+
+    public void setLocality(Locality locality) {
+	this.locality = locality;
+    }
+
+    @Override
+    public String toString() {
+	StringBuilder builder = new StringBuilder();
+	builder.append("AddressDto [type=");
+	builder.append(type);
+	builder.append(", identity=");
+	builder.append(identity);
+	builder.append(", identification=");
+	builder.append(identification);
+	builder.append(", localisationComplement=");
+	builder.append(localisationComplement);
+	builder.append(", label=");
+	builder.append(label);
+	builder.append(", distributionServices=");
+	builder.append(distributionServices);
+	builder.append(", locality=");
+	builder.append(locality);
+	builder.append("]");
+	return builder.toString();
+    }
 }

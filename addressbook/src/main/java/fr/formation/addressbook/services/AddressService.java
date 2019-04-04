@@ -5,7 +5,9 @@ import javax.validation.Valid;
 import fr.formation.addressbook.dtos.AddressDto;
 
 public interface AddressService {
-	
-	public void create(@Valid AddressDto dto);
 
+    /**
+     * @param dto
+     */
+    public void create(@Valid AddressDto dto);
 }
