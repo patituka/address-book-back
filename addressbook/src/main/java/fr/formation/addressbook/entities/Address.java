@@ -1,5 +1,6 @@
 package fr.formation.addressbook.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -35,7 +36,7 @@ public class Address extends AbstractEntity {
 	@Column(name = "distributionServices", length = 38)
 	private String distributionServices;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
 	@JoinColumn(nullable = false)
 	private Locality locality;
 

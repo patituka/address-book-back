@@ -4,6 +4,7 @@ package fr.formation.addressbook.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.entities.Types;
 
 
@@ -25,12 +26,9 @@ public class AddressDto {
 	
 	
 	private String distributionServices;
-	
 
-	private String zipCode;
 	
-	
-	private String locality;
+	private Locality locality;
 
 	public AddressDto() {
 		
@@ -84,21 +82,15 @@ public class AddressDto {
 		this.distributionServices = distributionServices;
 	}
 
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getLocality() {
+	public Locality getLocality() {
 		return locality;
 	}
 
-	public void setLocality(String locality) {
+	public void setLocality(Locality locality) {
 		this.locality = locality;
 	}
+
+	
 	
 	
 	

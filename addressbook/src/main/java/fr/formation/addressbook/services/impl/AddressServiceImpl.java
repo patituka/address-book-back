@@ -28,6 +28,7 @@ public class AddressServiceImpl implements AddressService {
 			address.setLocalisationComplement(dto.getLocalisationComplement());
 			address.setLabel(dto.getLabel());
 			address.setDistributionServices(dto.getDistributionServices());
+			address.setLocality(dto.getLocality());
 			repo.save(address);
 	}
 

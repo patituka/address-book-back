@@ -22,9 +22,9 @@ public class AddressController {
 	}
 	
 
-	@PostMapping ("/particular")
-	protected void create (@Valid @RequestBody AddressDto addressPart) {
-		service.create(addressPart);
+	@PostMapping ("/create")
+	protected void create (@Valid @RequestBody AddressDto address) {
+		service.create(address);
 	}
 	
 	
