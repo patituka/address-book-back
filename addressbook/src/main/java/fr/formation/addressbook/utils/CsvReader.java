@@ -1,4 +1,4 @@
-package fr.formation.addressbook.Utils;
+package fr.formation.addressbook.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
