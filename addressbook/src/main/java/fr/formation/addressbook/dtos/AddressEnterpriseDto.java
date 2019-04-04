@@ -3,10 +3,12 @@ package fr.formation.addressbook.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import fr.formation.addressbook.entities.Types;
+
 public class AddressEnterpriseDto {
 	
 	@NotBlank @NotNull
-	private String types;
+	private Types types ;
 	
 	@NotBlank @NotNull
 	private String identity;

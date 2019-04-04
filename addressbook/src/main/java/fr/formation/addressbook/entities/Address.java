@@ -32,7 +32,7 @@ public class Address extends AbstractEntity {
 	@Column(name= "distributionServices", length= 38)
 	private String distributionServices;
 	
-	@Column(name= "zipcode", length= 5,nullable = false)
+	@Column(name= "zipCode", length= 5,nullable = false)
 	private String zipCode;
 	
 	@Column(name= "locality", length= 38,nullable = false)
