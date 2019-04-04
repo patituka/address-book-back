@@ -6,11 +6,8 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.entities.Address;
-import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.repositories.AddressJpaRepository;
-import fr.formation.addressbook.repositories.LocalityRepository;
 import fr.formation.addressbook.services.AddressService;
-
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -20,8 +17,7 @@ public class AddressServiceImpl implements AddressService {
 	
 	public AddressServiceImpl (AddressJpaRepository repo ) {
 		this.repo = repo;
-		
-			}
+	}
 
 	@Override
 	public void create(@Valid AddressDto dto) {

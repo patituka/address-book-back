@@ -7,11 +7,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import fr.formation.addressbook.Utils.CsvProperties;
-import fr.formation.addressbook.Utils.CsvReader;
 import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.repositories.LocalityRepository;
 import fr.formation.addressbook.services.LocalityService;
+import fr.formation.addressbook.utils.CsvProperties;
+import fr.formation.addressbook.utils.CsvReader;
 
 /**
  * @author Administrateur
