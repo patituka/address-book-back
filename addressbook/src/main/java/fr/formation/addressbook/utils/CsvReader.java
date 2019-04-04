@@ -1,4 +1,4 @@
-package fr.formation.addressbook.Utils;
+package fr.formation.addressbook.utils;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,6 +18,7 @@ public class CsvReader {
 	try (BufferedReader br = Files.newBufferedReader(pathToFile,
 		StandardCharsets.UTF_8)) {
 	    String line = br.readLine();
+	    br.readLine();
 	    while (line != null) {
 		String[] att = line.split(";");
 		Locality address = createAddress(att);
