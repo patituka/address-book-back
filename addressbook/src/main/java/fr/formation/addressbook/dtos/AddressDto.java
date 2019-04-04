@@ -7,8 +7,7 @@ import javax.validation.constraints.NotNull;
 import fr.formation.addressbook.entities.Types;
 
 
-public class AddressPartDto {
-	
+public class AddressDto {
 	
 	private Types types  ;
 	
@@ -33,7 +32,7 @@ public class AddressPartDto {
 	
 	private String locality;
 
-	public AddressPartDto() {
+	public AddressDto() {
 		
 	}
 

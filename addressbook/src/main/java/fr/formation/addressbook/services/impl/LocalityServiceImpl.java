@@ -34,4 +34,10 @@ public class LocalityServiceImpl implements LocalityService {
 		? new ResponseEntity<>(true, HttpStatus.CREATED)
 		: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
+
+	@Override
+	public List<Locality> getCityList(String zipCode) {
+		List<Locality> localities = repository.findAllByZipCode(zipCode);
+		return localities;
+	}
 }

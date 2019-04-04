@@ -4,41 +4,40 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Address extends AbstractEntity {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5931394981912500386L;
 
-	@Column( nullable = false)	
-    @Enumerated(EnumType.STRING)
-    private Types types;
-	
-	@Column(name="identity", length = 38, nullable = false) 
+	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
+	private Types types;
+
+	@Column(name = "identity", length = 38, nullable = false)
 	private String identity;
-	
-	@Column(name= "identification", length= 38,nullable = false)
+
+	@Column(name = "identification", length = 38, nullable = false)
 	private String identification;
-	
-	@Column(name= "localisationComplement", length= 38)
+
+	@Column(name = "localisationComplement", length = 38)
 	private String localisationComplement;
-	
-	@Column(name= "label", length= 38,nullable = false)
+
+	@Column(name = "label", length = 38, nullable = false)
 	private String label;
-	
-	@Column(name= "distributionServices", length= 38)
+
+	@Column(name = "distributionServices", length = 38)
 	private String distributionServices;
-	
-	@Column(name= "zipCode", length= 5,nullable = false)
-	private String zipCode;
-	
-	@Column(name= "locality", length= 38,nullable = false)
-	private String locality;
-	
-	
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(nullable = false)
+	private Locality locality;
 
 	public Types getTypes() {
 		return types;
@@ -88,28 +87,20 @@ public class Address extends AbstractEntity {
 		this.distributionServices = distributionServices;
 	}
 
-	public String getZipCode() {
-		return zipCode;
-	}
-
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
-
-	public String getLocality() {
+	public Locality getLocality() {
 		return locality;
 	}
 
-	public void setLocality(String locality) {
+	public void setLocality(Locality locality) {
 		this.locality = locality;
 	}
 
 	public Address() {
-		
+
 	}
 
 	public Address(Types types, String identity, String identification, String localisationComplement, String label,
-			String distributionServices, String zipCode, String locality) {
+			String distributionServices, Locality locality) {
 		super();
 		this.types = types;
 		this.identity = identity;
@@ -117,7 +108,6 @@ public class Address extends AbstractEntity {
 		this.localisationComplement = localisationComplement;
 		this.label = label;
 		this.distributionServices = distributionServices;
-		this.zipCode = zipCode;
 		this.locality = locality;
 	}
 
@@ -136,21 +126,10 @@ public class Address extends AbstractEntity {
 		builder.append(label);
 		builder.append(", distributionServices=");
 		builder.append(distributionServices);
-		builder.append(", zipCode=");
-		builder.append(zipCode);
 		builder.append(", locality=");
 		builder.append(locality);
 		builder.append("]");
 		return builder.toString();
 	}
-
-	
-	
-	
-	
-
-	
-	
-	
 
 }
