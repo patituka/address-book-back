@@ -20,10 +20,10 @@ public class CsvReader {
 		br.readLine();
 	    String line = br.readLine();
 	    while (line != null) {
-		String[] att = line.split(";");
-		Locality address = createAddress(att);
-		addresses.add(address);
-		line = br.readLine();
+			String[] att = line.split(";");
+			Locality address = createAddress(att);
+			addresses.add(address);
+			line = br.readLine();
 	    }
 	} catch (IOException e) {
 	    e.printStackTrace();
