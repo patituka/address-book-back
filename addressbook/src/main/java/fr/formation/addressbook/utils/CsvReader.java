@@ -18,6 +18,7 @@ public class CsvReader {
 	try (BufferedReader br = Files.newBufferedReader(pathToFile,
 		StandardCharsets.UTF_8)) {
 	    String line = br.readLine();
+	    br.readLine();
 	    while (line != null) {
 		String[] att = line.split(";");
 		Locality address = createAddress(att);
@@ -32,8 +33,8 @@ public class CsvReader {
     }
 
     private static Locality createAddress(String[] data) {
-	String codePostal = data[1];
-	String commune = data[2];
+	String codePostal = data[2];
+	String commune = data[3];
 	return new Locality(codePostal, commune);
     }
 }
