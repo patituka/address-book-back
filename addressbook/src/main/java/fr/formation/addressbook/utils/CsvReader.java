@@ -8,10 +8,17 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import fr.formation.addressbook.entities.Locality;
 
 public class CsvReader {
-
+	
+	private static final Logger logger = LogManager.getLogger(CsvReader.class);
+	
     public static List<Locality> readCsvFile(String path) {
 	List<Locality> addresses = new ArrayList<>();
 	Path pathToFile = Paths.get(path);
@@ -19,6 +26,7 @@ public class CsvReader {
 		StandardCharsets.UTF_8)) {
 		br.readLine();
 	    String line = br.readLine();
+	    
 	    while (line != null) {
 			String[] att = line.split(";");
 			Locality address = createAddress(att);
@@ -26,9 +34,12 @@ public class CsvReader {
 			line = br.readLine();
 	    }
 	} catch (IOException e) {
+		logger.error("the file is malformated or unmapped");
 	    e.printStackTrace();
 	}
+	
 	return addresses;
+	
 	// return addresses.subList(1, addresses.size());
     }
 

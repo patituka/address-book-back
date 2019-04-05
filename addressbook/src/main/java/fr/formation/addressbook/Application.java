@@ -1,5 +1,7 @@
 package fr.formation.addressbook;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.config.Configuration.AccessLevel;
 import org.springframework.boot.SpringApplication;
@@ -13,12 +15,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @SpringBootApplication
 public class Application {
-
+	 private static final Logger logger = LogManager.getLogger(Application.class);
     /**
      * @param args
      */
     public static void main(String[] args) {
 	SpringApplication.run(Application.class, args);
+	logger.info("Starting application");
     }
 
     @Bean
