@@ -21,11 +21,12 @@ public class Application {
      */
     public static void main(String[] args) {
 	SpringApplication.run(Application.class, args);
-	logger.info("Starting application");
+	logger.info("starting application...");
     }
 
     @Bean
     protected WebMvcConfigurer webMvcConfigurer() {
+    	
 	return new WebMvcConfigurer() {
 
 	    @Override

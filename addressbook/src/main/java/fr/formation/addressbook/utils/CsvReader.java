@@ -26,7 +26,7 @@ public class CsvReader {
 		StandardCharsets.UTF_8)) {
 		br.readLine();
 	    String line = br.readLine();
-	    
+	    logger.info("Création base de donnée");
 	    while (line != null) {
 			String[] att = line.split(";");
 			Locality address = createAddress(att);
@@ -35,15 +35,17 @@ public class CsvReader {
 	    }
 	} catch (IOException e) {
 		logger.error("the file is malformated or unmapped");
+		
 	    e.printStackTrace();
 	}
-	
+	logger.info("BasedeDonée created");
 	return addresses;
 	
 	// return addresses.subList(1, addresses.size());
     }
 
     private static Locality createAddress(String[] data) {
+    	
 	String codePostal = data[2];
 	String commune = data[3];
 	return new Locality(codePostal, commune);
