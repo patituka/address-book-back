@@ -1,8 +1,10 @@
 package fr.formation.addressbook.services.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,6 +29,9 @@ public class LocalityServiceImpl implements LocalityService {
     @Autowired
     private CsvProperties properties;
 
+    @Autowired
+    private ModelMapper mapper;
+
     @Override
     public ResponseEntity<Boolean> saveAll() {
 	repository.deleteAll();
@@ -38,9 +43,13 @@ public class LocalityServiceImpl implements LocalityService {
     }
 
     @Override
-    public List<Locality> getCityList(String zipCode) {
-	List<Locality> list = repository.findAll();
-	return list.stream().filter(l -> zipCode.equals(l.getCodePostal()))
-		.collect(Collectors.toList());
+    public List<LocalityDto> getCityList(String zipCode) {
+	List<Locality> list = repository.findAllByZipCode(zipCode);
+	List<LocalityDto> dtos = new ArrayList<>();
+	for (Locality locality : list) {
+	    LocalityDto dto = mapper.map(locality, LocalityDto.class);
+	    dtos.add(dto);
+	}
+	return Collections.unmodifiableList(dtos);
     }
 }

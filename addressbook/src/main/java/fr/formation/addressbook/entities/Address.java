@@ -1,19 +1,16 @@
 package fr.formation.addressbook.entities;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Address extends AbstractEntity {
 
     /**
-     * 
+     *
      */
     private static final long serialVersionUID = -5931394981912500386L;
 
@@ -21,7 +18,7 @@ public class Address extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Types type;
 
-    @Column (length = 38, nullable = false)
+    @Column(length = 38, nullable = false)
     private String identity;
 
     @Column(length = 38, nullable = false)
@@ -36,14 +33,14 @@ public class Address extends AbstractEntity {
     @Column(length = 38)
     private String distributionServices;
 
-   @ManyToOne
+    @ManyToOne
     private Locality locality;
 
-    public Types getTypes() {
+    public Types getType() {
 	return type;
     }
 
-    public void setTypes(Types type) {
+    public void setType(Types type) {
 	this.type = type;
     }
 

@@ -1,38 +1,36 @@
 package fr.formation.addressbook.dtos;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class LocalityDto {
 
-	@NotBlank
-	private String zipCode;
+    @NotNull
+    private String id;
 
-	@NotNull
-	private String city;
+    @NotNull
+    private String city;
 
-	public LocalityDto() {
-	}
+    public LocalityDto() {
+    }
 
-	public LocalityDto(@NotBlank String zipCode, @NotNull String city) {
-		this.zipCode = zipCode;
-		this.city = city;
-	}
+    public LocalityDto(@NotNull String id, @NotNull String city) {
+	this.id = id;
+	this.city = city;
+    }
 
-	public String getZipCode() {
-		return zipCode;
-	}
+    public String getCity() {
+	return city;
+    }
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
+    public void setCity(String city) {
+	this.city = city;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public String getId() {
+	return id;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
+    public void setId(String id) {
+	this.id = id;
+    }
 }
