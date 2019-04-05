@@ -18,7 +18,7 @@ public class Locality extends AbstractEntity{
 	@Column(name = "nom_commune", length = 100, nullable = false)
 	private String city;
     
-    @Column(name = "code_postal", length = 100, nullable = false)
+    @Column(name = "code_postal", length = 5, nullable = false)
 	private String zipCode;
 
 	public String getNomCommune() {

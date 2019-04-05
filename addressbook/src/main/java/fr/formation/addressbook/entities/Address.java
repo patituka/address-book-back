@@ -19,33 +19,32 @@ public class Address extends AbstractEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Types types;
+    private Types type;
 
-    @Column(name = "identity", length = 38, nullable = false)
+    @Column (length = 38, nullable = false)
     private String identity;
 
-    @Column(name = "identification", length = 38, nullable = false)
+    @Column(length = 38, nullable = false)
     private String identification;
 
-    @Column(name = "localisationComplement", length = 38)
+    @Column(length = 38)
     private String localisationComplement;
 
-    @Column(name = "label", length = 38, nullable = false)
+    @Column(length = 38, nullable = false)
     private String label;
 
-    @Column(name = "distributionServices", length = 38)
+    @Column(length = 38)
     private String distributionServices;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(nullable = false)
+   @ManyToOne
     private Locality locality;
 
     public Types getTypes() {
-	return types;
+	return type;
     }
 
-    public void setTypes(Types types) {
-	this.types = types;
+    public void setTypes(Types type) {
+	this.type = type;
     }
 
     public String getIdentity() {
@@ -99,11 +98,11 @@ public class Address extends AbstractEntity {
     public Address() {
     }
 
-    public Address(Types types, String identity, String identification,
+    public Address(Types type, String identity, String identification,
 	    String localisationComplement, String label,
 	    String distributionServices, Locality locality) {
 	super();
-	this.types = types;
+	this.type = type;
 	this.identity = identity;
 	this.identification = identification;
 	this.localisationComplement = localisationComplement;
@@ -116,7 +115,7 @@ public class Address extends AbstractEntity {
     public String toString() {
 	StringBuilder builder = new StringBuilder();
 	builder.append("Address [types=");
-	builder.append(types);
+	builder.append(type);
 	builder.append(", identity=");
 	builder.append(identity);
 	builder.append(", identification=");

@@ -11,10 +11,10 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/addressbook?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=CET
     username: root
-    password: Diana2016
+    password: root
   jpa:
     show-sql: true
-    generate-ddl: false
+    generate-ddl: true
     hibernate:
       ddl-auto: create
     properties:

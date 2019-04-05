@@ -8,19 +8,18 @@ import fr.formation.addressbook.entities.Types;
 
 public class AddressDto {
 
+	
     private Types type;
 
-    @NotBlank
     @NotNull
     private String identity;
 
-    @NotBlank
+
     @NotNull
     private String identification;
 
     private String localisationComplement;
 
-    @NotBlank
     @NotNull
     private String label;
 
