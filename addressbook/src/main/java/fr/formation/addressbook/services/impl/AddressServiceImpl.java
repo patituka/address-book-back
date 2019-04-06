@@ -12,11 +12,13 @@ import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.entities.Address;
 import fr.formation.addressbook.repositories.AddressJpaRepository;
 import fr.formation.addressbook.services.AddressService;
-import fr.formation.addressbook.utils.CsvReader;
 
 @Service
 public class AddressServiceImpl implements AddressService {
-	private static final Logger logger = LogManager.getLogger(AddressServiceImpl.class);
+
+    private static final Logger LOGGER = LogManager
+	    .getLogger(AddressServiceImpl.class);
+
     @Autowired
     private AddressJpaRepository repo;
 
@@ -27,6 +29,5 @@ public class AddressServiceImpl implements AddressService {
     public void create(@Valid AddressDto dto) {
 	Address address = mapper.map(dto, Address.class);
 	repo.save(address);
-	
     }
 }

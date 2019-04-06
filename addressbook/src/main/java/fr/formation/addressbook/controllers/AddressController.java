@@ -1,6 +1,7 @@
 package fr.formation.addressbook.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.dtos.LocalityDto;
+import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.services.AddressService;
 import fr.formation.addressbook.services.LocalityService;
 
@@ -33,19 +34,27 @@ public class AddressController {
     @Autowired
     public LocalityService serviceLoc;
 
+    /**
+     * @param address
+     * @return
+     */
     @PostMapping
-    protected @ResponseBody ResponseEntity<String> create(
+    public ResponseEntity<String> create(
 	    @Valid @RequestBody AddressDto address) {
 	service.create(address);
+	// TODO return response to the front
 	return new ResponseEntity<>("POST Response", HttpStatus.OK);
     }
 
     /**
-     * @return
+     * @return true if created
      */
     @GetMapping("/save")
     public ResponseEntity<Boolean> saveCsvData() {
-	return serviceLoc.saveAll();
+	Optional<List<Locality>> listOptional = serviceLoc.saveAll();
+	return listOptional.isPresent()
+		? new ResponseEntity<>(true, HttpStatus.CREATED)
+		: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
 
     /**

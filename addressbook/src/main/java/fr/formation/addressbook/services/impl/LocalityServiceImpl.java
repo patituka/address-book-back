@@ -3,11 +3,10 @@ package fr.formation.addressbook.services.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fr.formation.addressbook.dtos.LocalityDto;
@@ -33,13 +32,11 @@ public class LocalityServiceImpl implements LocalityService {
     private ModelMapper mapper;
 
     @Override
-    public ResponseEntity<Boolean> saveAll() {
+    public Optional<List<Locality>> saveAll() {
 	repository.deleteAll();
-	List<Locality> addresses = repository
+	List<Locality> list = repository
 		.saveAll(CsvReader.readCsvFile(properties.getCsvUrl()));
-	return !addresses.isEmpty()
-		? new ResponseEntity<>(true, HttpStatus.CREATED)
-		: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+	return Optional.of(list);
     }
 
     @Override

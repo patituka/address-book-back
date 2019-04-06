@@ -7,13 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import fr.formation.addressbook.entities.Locality;
 
-
 @Repository
-public interface LocalityRepository extends JpaRepository<Locality, Long>{
+public interface LocalityRepository extends JpaRepository<Locality, Long> {
 
-	List<Locality> findAllByZipCode(String zipCode);
-	
-	
-	
-	
+    /**
+     * @param zipCode
+     * @return list of Locality( id city zipCode )
+     */
+    List<Locality> findAllByZipCode(String zipCode);
 }
