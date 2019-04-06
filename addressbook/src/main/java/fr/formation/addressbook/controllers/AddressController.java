@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.dtos.LocalityDto;
-import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.services.AddressService;
 import fr.formation.addressbook.services.LocalityService;
 
@@ -35,34 +34,27 @@ public class AddressController {
     public LocalityService serviceLoc;
 
     /**
-     * @param address
-     * @return
+     * @param addressDto
+     * @return response HttpStatus
      */
     @PostMapping
-    public ResponseEntity<String> create(
-	    @Valid @RequestBody AddressDto address) {
-	service.create(address);
-	// TODO return response to the front
-	return new ResponseEntity<>("POST Response", HttpStatus.OK);
-    }
-
-    /**
-     * @return true if created
-     */
-    @GetMapping("/save")
-    public ResponseEntity<Boolean> saveCsvData() {
-	Optional<List<Locality>> listOptional = serviceLoc.saveAll();
-	return listOptional.isPresent()
-		? new ResponseEntity<>(true, HttpStatus.CREATED)
-		: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+    public ResponseEntity<AddressDto> create(
+	    @Valid @RequestBody AddressDto addressDto) {
+	service.create(addressDto);
+	return new ResponseEntity<>(addressDto, HttpStatus.OK);
     }
 
     /**
      * @param zipCode
-     * @return
+     * @return response HttpStatus
      */
     @GetMapping("/city/{zipCode}")
-    public List<LocalityDto> getCity(@PathVariable String zipCode) {
-	return serviceLoc.getCityList(zipCode);
+    public ResponseEntity<List<LocalityDto>> getCity(
+	    @PathVariable String zipCode) {
+	Optional<List<LocalityDto>> listOptional = serviceLoc
+		.getCityList(zipCode);
+	return listOptional.isPresent()
+		? new ResponseEntity<>(listOptional.get(), HttpStatus.OK)
+		: new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -40,13 +40,13 @@ public class LocalityServiceImpl implements LocalityService {
     }
 
     @Override
-    public List<LocalityDto> getCityList(String zipCode) {
+    public Optional<List<LocalityDto>> getCityList(String zipCode) {
 	List<Locality> list = repository.findAllByZipCode(zipCode);
 	List<LocalityDto> dtos = new ArrayList<>();
 	for (Locality locality : list) {
 	    LocalityDto dto = mapper.map(locality, LocalityDto.class);
 	    dtos.add(dto);
 	}
-	return Collections.unmodifiableList(dtos);
+	return Optional.of(Collections.unmodifiableList(dtos));
     }
 }

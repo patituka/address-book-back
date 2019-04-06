@@ -13,5 +13,5 @@ public interface LocalityService {
 
     Optional<List<Locality>> saveAll();
 
-    List<LocalityDto> getCityList(String zipCode);
+    Optional<List<LocalityDto>> getCityList(String zipCode);
 }
