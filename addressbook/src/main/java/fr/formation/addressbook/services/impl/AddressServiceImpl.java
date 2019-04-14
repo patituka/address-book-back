@@ -1,5 +1,9 @@
 package fr.formation.addressbook.services.impl;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,5 +33,16 @@ public class AddressServiceImpl implements AddressService {
     public void create(@Valid AddressDto dto) {
 	Address address = mapper.map(dto, Address.class);
 	repo.save(address);
+    }
+
+    @Override
+    public List<AddressDto> findAll() {
+	List<Address> addresses = repo.findAll();
+	List<AddressDto> addressDtos = new ArrayList<>();
+	for (Address address : addresses) {
+	    AddressDto addressDto = mapper.map(address, AddressDto.class);
+	    addressDtos.add(addressDto);
+	}
+	return Collections.unmodifiableList(addressDtos);
     }
 }

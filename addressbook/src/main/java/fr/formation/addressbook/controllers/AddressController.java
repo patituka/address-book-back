@@ -45,6 +45,14 @@ public class AddressController {
     }
 
     /**
+     * @return list
+     */
+    @GetMapping("/all")
+    public List<AddressDto> getAddresses() {
+	return service.findAll();
+    }
+
+    /**
      * @param zipCode
      * @return response HttpStatus
      */
