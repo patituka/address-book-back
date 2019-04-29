@@ -48,6 +48,8 @@ public class CsvReader {
     	
 	String codePostal = data[2];
 	String commune = data[3];
-	return new Locality(codePostal, commune);
+	Double latitude = null;
+	Double longitude = null;
+	return new Locality(codePostal, commune, latitude, longitude);
     }
 }

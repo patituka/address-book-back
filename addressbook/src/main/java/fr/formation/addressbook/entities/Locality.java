@@ -20,7 +20,13 @@ public class Locality extends AbstractEntity{
     
     @Column(name = "code_postal", length = 5, nullable = false)
 	private String zipCode;
-
+    
+    @Column(name = "latitude")
+    private Double latitude;
+    
+    @Column (name= "longitude")
+    private Double longitude;
+    
 	public String getNomCommune() {
 		return city;
 	}
@@ -36,22 +42,32 @@ public class Locality extends AbstractEntity{
 	public void setCodePostal(String codePostal) {
 		this.zipCode = codePostal;
 	}
+	
 
-	public Locality(String codePostal, String nomCommune) {
-		this.city = nomCommune;
-		this.zipCode = codePostal;
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public Locality(String zipCode,String city,Double latitude, Double longitude) {
+		this.zipCode = zipCode;
+		this.city = city;
+		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 
 	public Locality() {	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Address [commune=");
-		builder.append(city);
-		builder.append(", codePostal=");
-		builder.append(zipCode);
-		builder.append("]");
-		return builder.toString();
-	}
+	
 }
