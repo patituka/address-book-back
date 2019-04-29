@@ -6,7 +6,7 @@ import javax.validation.constraints.NotNull;
 public class LocalityDto {
 
 	@NotBlank
-	private String zipCode;
+	private int id;
 
 	@NotNull
 	private String city;
@@ -14,17 +14,17 @@ public class LocalityDto {
 	public LocalityDto() {
 	}
 
-	public LocalityDto(@NotBlank String zipCode, @NotNull String city) {
-		this.zipCode = zipCode;
+	public LocalityDto(@NotBlank int id, @NotNull String city) {
+		this.id = id;
 		this.city = city;
 	}
 
-	public String getZipCode() {
-		return zipCode;
+	public int getId() {
+		return id;
 	}
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getCity() {
