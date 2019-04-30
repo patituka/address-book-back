@@ -12,10 +12,14 @@ spring:
     url: jdbc:mysql://localhost:3306/addressbook?createDatabaseIfNotExist=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=CET
     username: root
 <<<<<<< HEAD
+<<<<<<< HEAD
     password: 
 =======
     password: Diana2016
 >>>>>>> d88c8456319cdf91f7a563fa36753532386035ce
+=======
+    password: Diana2016
+>>>>>>> 93e907bd7e65c3c38b2bd7ecea2cf7ce1e160d62
   jpa:
     show-sql: true
     generate-ddl: false
