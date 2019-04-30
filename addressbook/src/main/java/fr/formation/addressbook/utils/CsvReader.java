@@ -46,12 +46,15 @@ public class CsvReader {
     private static Locality createAddress(String[] data) {
 	String zipCode = data[2];
 	String city = data[3];
+	String district="";
+	if (data[4].isEmpty()) { district = "";} else { 
+		district = data[4];};
 	String coordinates =data[5];
 	Double latitude =0.0;
 	Double longitude = 0.0;
-	if (coordinates.isEmpty()) { coordinates = "0,0";} else { 
+	if (coordinates.isEmpty()) { coordinates = "0.0";} else { 
 		latitude = Double.valueOf(coordinates.split(",")[0]);
 		longitude = Double.valueOf(coordinates.split(",")[1]);};
-	return new Locality(zipCode, city, latitude, longitude );
+	return new Locality(zipCode, city, district,latitude, longitude );
     }
 }

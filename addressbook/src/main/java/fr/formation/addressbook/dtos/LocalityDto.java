@@ -10,13 +10,16 @@ public class LocalityDto {
 
 	@NotNull
 	private String city;
+	
+	private String district;
 
 	public LocalityDto() {
 	}
 
-	public LocalityDto(@NotBlank int id, @NotNull String city) {
+	public LocalityDto(@NotBlank int id, @NotNull String city,String district) {
 		this.id = id;
 		this.city = city;
+		this.district = district;
 	}
 
 	public int getId() {
@@ -34,5 +37,15 @@ public class LocalityDto {
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+	public String getDistrict() {
+		return district;
+	}
+
+	public void setDistrict(String district) {
+		this.district = district;
+	}
+	
+	
 
 }
