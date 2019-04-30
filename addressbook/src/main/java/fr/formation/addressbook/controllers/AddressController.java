@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.dtos.LocalityDto;
-
+import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.services.AddressService;
 import fr.formation.addressbook.services.LocalityService;
 
@@ -49,5 +49,11 @@ public class AddressController {
     @GetMapping("/city/{zipCode}")
     public List<LocalityDto> getCity(@PathVariable String zipCode){
     	return serviceLoc.getCityList(zipCode);
+    }
+    
+    @GetMapping("/cities")
+    public List<Locality> getAllCities() {
+		return serviceLoc.getCities();
+    	
     }
 }

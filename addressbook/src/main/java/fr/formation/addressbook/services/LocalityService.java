@@ -14,6 +14,10 @@ public interface LocalityService {
     ResponseEntity<Boolean> saveAll();
 
     List<LocalityDto> getCityList(String zipCode);
+
+	List<Locality> getCities();
+
+	
     
     
     

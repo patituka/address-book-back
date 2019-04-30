@@ -57,5 +57,11 @@ public class LocalityServiceImpl implements LocalityService {
 	return dtos;
 	
     }
+
+	@Override
+	public List<Locality> getCities() {
+		List<Locality> list = repository.findAll();
+		return list;
+	}
 	
 }
