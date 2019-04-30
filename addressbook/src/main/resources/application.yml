@@ -13,6 +13,7 @@ spring:
     username: root
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     password: 
 =======
     password: Diana2016
@@ -20,6 +21,9 @@ spring:
 =======
     password: Diana2016
 >>>>>>> 93e907bd7e65c3c38b2bd7ecea2cf7ce1e160d62
+=======
+    password: root
+>>>>>>> fd7d428c2aa8038e3aeeef0508e487e08f7d9b45
   jpa:
     show-sql: true
     generate-ddl: false
