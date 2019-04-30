@@ -11,7 +11,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
+import org.hibernate.validator.constraints.Length;
 
 import fr.formation.addressbook.entities.Locality;
 
@@ -26,9 +26,9 @@ public class CsvReader {
 		StandardCharsets.UTF_8)) {
 		br.readLine();
 	    String line = br.readLine();
-	    logger.info("Création base de donnée");
+	    logger.info("Database created");
 	    while (line != null) {
-			String[] att = line.split(";");
+			String[] att = line.split(";",-1);
 			Locality address = createAddress(att);
 			addresses.add(address);
 			line = br.readLine();
@@ -38,16 +38,20 @@ public class CsvReader {
 		
 	    e.printStackTrace();
 	}
-	logger.info("BasedeDonée created");
+	logger.info("Database created");
 	return addresses;
 	
-	// return addresses.subList(1, addresses.size());
     }
 
     private static Locality createAddress(String[] data) {
-    	
-	String codePostal = data[2];
-	String commune = data[3];
-	return new Locality(codePostal, commune);
+	String zipCode = data[2];
+	String city = data[3];
+	String coordinates =data[5];
+	Double latitude =0.0;
+	Double longitude = 0.0;
+	if (coordinates.isEmpty()) { coordinates = "0,0";} else { 
+		latitude = Double.valueOf(coordinates.split(",")[0]);
+		longitude = Double.valueOf(coordinates.split(",")[1]);};
+	return new Locality(zipCode, city, latitude, longitude );
     }
 }

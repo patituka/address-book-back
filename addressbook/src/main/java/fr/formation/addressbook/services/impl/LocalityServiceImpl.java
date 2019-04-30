@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,11 +37,13 @@ public class LocalityServiceImpl implements LocalityService {
     @Autowired
     private CsvProperties properties;
 
+    @Transactional
     @Override
     public ResponseEntity<Boolean> saveAll() {
 	repository.deleteAll();
-	List<Locality> addresses = repository
-		.saveAll(CsvReader.readCsvFile(properties.getCsvUrl()));
+	List<Locality> addresses = CsvReader.readCsvFile(properties.getCsvUrl());
+	repository
+		.saveAll(addresses);
 	return !addresses.isEmpty()
 		? new ResponseEntity<>(true, HttpStatus.CREATED)
 		: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
