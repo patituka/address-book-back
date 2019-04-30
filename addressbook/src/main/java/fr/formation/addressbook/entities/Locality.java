@@ -15,10 +15,10 @@ public class Locality extends AbstractEntity{
 	private static final long serialVersionUID = -6209937263508364485L;
 
 	
-	@Column(name = "nom_commune", length = 100, nullable = false)
+	@Column(name = "city", length = 100, nullable = false)
 	private String city;
     
-    @Column(name = "code_postal", length = 5, nullable = false)
+    @Column(name = "zipCode", length = 5, nullable = false)
 	private String zipCode;
     
     @Column(name = "latitude")
@@ -31,16 +31,16 @@ public class Locality extends AbstractEntity{
 		return city;
 	}
 
-	public void setNomCommune(String nomCommune) {
-		this.city = nomCommune;
+	public void setNomCommune(String city) {
+		this.city = city;
 	}
 
-	public String getCodePostal() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setCodePostal(String codePostal) {
-		this.zipCode = codePostal;
+	public void setCodePostal(String zipCode) {
+		this.zipCode = zipCode;
 	}
 	
 
