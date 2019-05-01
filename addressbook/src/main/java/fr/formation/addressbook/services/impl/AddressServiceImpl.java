@@ -17,6 +17,9 @@ import fr.formation.addressbook.entities.Address;
 import fr.formation.addressbook.repositories.AddressJpaRepository;
 import fr.formation.addressbook.services.AddressService;
 
+/**
+ * @author Administrateur
+ */
 @Service
 public class AddressServiceImpl implements AddressService {
 

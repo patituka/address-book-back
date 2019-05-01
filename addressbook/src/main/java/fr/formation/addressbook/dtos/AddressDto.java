@@ -1,19 +1,19 @@
 package fr.formation.addressbook.dtos;
 
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.entities.Types;
 
+/**
+ * @author Administrateur
+ */
 public class AddressDto {
 
-	
     private Types type;
 
     @NotNull
     private String identity;
-
 
     @NotNull
     private String identification;
@@ -78,10 +78,16 @@ public class AddressDto {
 	this.distributionServices = distributionServices;
     }
 
+    /**
+     * @param locality
+     */
     public void setLocality(Locality locality) {
 	this.locality = locality;
     }
 
+    /**
+     * @return
+     */
     @Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
