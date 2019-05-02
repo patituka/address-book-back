@@ -11,7 +11,7 @@ public abstract class AbstractEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
-    public String ar;
+   
 
     /**
      * Creates a new {@code AbstractEntity} with {@code null} id and optimistic
