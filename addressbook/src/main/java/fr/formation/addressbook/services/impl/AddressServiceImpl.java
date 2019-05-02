@@ -1,5 +1,7 @@
 package fr.formation.addressbook.services.impl;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
@@ -29,4 +31,18 @@ public class AddressServiceImpl implements AddressService {
 	repo.save(address);
 	
     }
+
+	@Override
+	public void delete(Long id) {
+	repo.deleteById(id);
+	}
+
+	@Override
+	public List<Address> getAddresses() {
+	List<Address> list = repo.findAll();
+	return list;
+
+	}
+	
+	
 }
