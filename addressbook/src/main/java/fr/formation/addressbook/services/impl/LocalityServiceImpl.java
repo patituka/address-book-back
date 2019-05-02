@@ -9,6 +9,11 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -51,7 +56,8 @@ public class LocalityServiceImpl implements LocalityService {
 
     @Override
     public List<LocalityDto> getCityList(String zipCode) {	
-	List<Locality> list = repository.findAllByZipCode(zipCode);
+	
+    List<Locality> list = repository.findAllByZipCode(zipCode);
 	List<LocalityDto> dtos = new ArrayList<>();
 	for (Locality locality: list) {
 		LocalityDto dto = mapper.map(locality, LocalityDto.class);
@@ -63,9 +69,9 @@ public class LocalityServiceImpl implements LocalityService {
     }
 
 	@Override
-	public List<Locality> getCities() {
-		List<Locality> list = repository.findAll();
-		return list;
+	public Page<Locality> getCities(Pageable pageable) {
+		Page<Locality> page = repository.findAll(pageable);
+		return page;
 	}
 	
 }

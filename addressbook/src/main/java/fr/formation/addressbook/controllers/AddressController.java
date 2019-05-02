@@ -7,6 +7,9 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.formation.addressbook.dtos.AddressDto;
 import fr.formation.addressbook.dtos.LocalityDto;
 import fr.formation.addressbook.entities.Locality;
+import fr.formation.addressbook.repositories.LocalityRepository;
 import fr.formation.addressbook.services.AddressService;
 import fr.formation.addressbook.services.LocalityService;
 
@@ -47,13 +51,14 @@ public class AddressController {
     }
     
     @GetMapping("/city/{zipCode}")
-    public List<LocalityDto> getCity(@PathVariable String zipCode){
+    public List<LocalityDto> getCity(@PathVariable String zipCode
+){ 
     	return serviceLoc.getCityList(zipCode);
     }
     
     @GetMapping("/cities")
-    public List<Locality> getAllCities() {
-		return serviceLoc.getCities();
+    public Page<Locality> getAllCities(@PageableDefault(size = 5, sort = "id") Pageable pageable) {
+		return serviceLoc.getCities(pageable);
     	
     }
 }
