@@ -69,7 +69,7 @@ public class AddressController {
     }
     
     @GetMapping("/list")
-    protected List<Address> getAllAddress(){
+    protected List<AddressDto> getAllAddress(){
     return service.getAddresses();
     }
 

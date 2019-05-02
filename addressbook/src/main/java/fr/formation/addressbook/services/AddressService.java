@@ -16,6 +16,6 @@ public interface AddressService {
 
 	public void delete(Long id);
 
-	public List<Address> getAddresses();
+	public List<AddressDto> getAddresses();
 	
 }

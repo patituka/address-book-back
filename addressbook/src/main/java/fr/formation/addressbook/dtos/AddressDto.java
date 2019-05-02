@@ -14,7 +14,6 @@ public class AddressDto {
     @NotNull
     private String identity;
 
-
     @NotNull
     private String identification;
 
@@ -82,7 +81,11 @@ public class AddressDto {
 	this.locality = locality;
     }
 
-    @Override
+    public Locality getLocality() {
+		return locality;
+	}
+
+	@Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
 	builder.append("AddressDto [type=");

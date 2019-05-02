@@ -1,5 +1,6 @@
 package fr.formation.addressbook.services.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import fr.formation.addressbook.dtos.AddressDto;
+import fr.formation.addressbook.dtos.LocalityDto;
 import fr.formation.addressbook.entities.Address;
+import fr.formation.addressbook.entities.Locality;
 import fr.formation.addressbook.repositories.AddressJpaRepository;
 import fr.formation.addressbook.services.AddressService;
 import fr.formation.addressbook.utils.CsvReader;
@@ -38,10 +41,15 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public List<Address> getAddresses() {
+	public List<AddressDto> getAddresses() {
 	List<Address> list = repo.findAll();
-	return list;
-
+	List<AddressDto> dtos = new ArrayList<>();
+	for (Address address : list) {
+		AddressDto dto = mapper.map(address, AddressDto.class);
+		dtos.add(dto);
+	}
+	System.out.println(dtos);
+	return dtos;
 	}
 	
 	
