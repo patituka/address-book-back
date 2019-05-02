@@ -23,4 +23,3 @@ spring:
         format_sql: true
   messages:
     use-code-as-default-message: true
-    
