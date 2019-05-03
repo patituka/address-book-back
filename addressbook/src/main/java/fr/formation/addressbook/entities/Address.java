@@ -6,6 +6,9 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
+/**
+ * @author Administrateur
+ */
 @Entity
 public class Address extends AbstractEntity {
 
@@ -18,20 +21,20 @@ public class Address extends AbstractEntity {
     @Enumerated(EnumType.STRING)
     private Types type;
 
-    @Column(length = 38, nullable = false)
+    @Column(length = 255, nullable = false)
     private String identity;
 
-    @Column(length = 38, nullable = false)
-    private String identification;
+    @Column(length = 255, nullable = false)
+    private String street;
 
-    @Column(length = 38)
-    private String localisationComplement;
+    @Column(length = 255)
+    private String streetComplement;
 
-    @Column(length = 38, nullable = false)
+    @Column(length = 40)
     private String label;
 
-    @Column(length = 38)
-    private String distributionServices;
+    @Column(length = 40)
+    private String building;
 
     @ManyToOne
     private Locality locality;
@@ -52,20 +55,20 @@ public class Address extends AbstractEntity {
 	this.identity = identity;
     }
 
-    public String getIdentification() {
-	return identification;
+    public String getStreet() {
+	return street;
     }
 
-    public void setIdentification(String identification) {
-	this.identification = identification;
+    public void setStreet(String street) {
+	this.street = street;
     }
 
-    public String getLocalisationComplement() {
-	return localisationComplement;
+    public String getStreetComplement() {
+	return streetComplement;
     }
 
-    public void setLocalisationComplement(String localisationComplement) {
-	this.localisationComplement = localisationComplement;
+    public void setStreetComplement(String streetComplement) {
+	this.streetComplement = streetComplement;
     }
 
     public String getLabel() {
@@ -76,12 +79,12 @@ public class Address extends AbstractEntity {
 	this.label = label;
     }
 
-    public String getDistributionServices() {
-	return distributionServices;
+    public String getBuilding() {
+	return building;
     }
 
-    public void setDistributionServices(String distributionServices) {
-	this.distributionServices = distributionServices;
+    public void setBuilding(String building) {
+	this.building = building;
     }
 
     public Locality getLocality() {
@@ -92,37 +95,46 @@ public class Address extends AbstractEntity {
 	this.locality = locality;
     }
 
-    public Address() {
-    }
-
-    public Address(Types type, String identity, String identification,
-	    String localisationComplement, String label,
-	    String distributionServices, Locality locality) {
+    /**
+     * @param type
+     * @param identity
+     * @param street
+     * @param streetComplement
+     * @param label
+     * @param building
+     * @param locality
+     */
+    public Address(Types type, String identity, String street,
+	    String streetComplement, String label, String building,
+	    Locality locality) {
 	super();
 	this.type = type;
 	this.identity = identity;
-	this.identification = identification;
-	this.localisationComplement = localisationComplement;
+	this.street = street;
+	this.streetComplement = streetComplement;
 	this.label = label;
-	this.distributionServices = distributionServices;
+	this.building = building;
 	this.locality = locality;
     }
 
+    /**
+     * @return
+     */
     @Override
     public String toString() {
 	StringBuilder builder = new StringBuilder();
-	builder.append("Address [types=");
+	builder.append("Address [type=");
 	builder.append(type);
 	builder.append(", identity=");
 	builder.append(identity);
-	builder.append(", identification=");
-	builder.append(identification);
-	builder.append(", localisationComplement=");
-	builder.append(localisationComplement);
+	builder.append(", street=");
+	builder.append(street);
+	builder.append(", streetComplement=");
+	builder.append(streetComplement);
 	builder.append(", label=");
 	builder.append(label);
-	builder.append(", distributionServices=");
-	builder.append(distributionServices);
+	builder.append(", building=");
+	builder.append(building);
 	builder.append(", locality=");
 	builder.append(locality);
 	builder.append("]");

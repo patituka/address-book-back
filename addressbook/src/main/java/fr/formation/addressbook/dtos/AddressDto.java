@@ -10,21 +10,22 @@ import fr.formation.addressbook.entities.Types;
  */
 public class AddressDto {
 
+    @NotNull
     private Types type;
 
     @NotNull
     private String identity;
 
     @NotNull
-    private String identification;
+    private String street;
 
-    private String localisationComplement;
+    private String streetComplement;
 
-    @NotNull
     private String label;
 
-    private String distributionServices;
+    private String building;
 
+    @NotNull
     private Locality locality;
 
     public AddressDto() {
@@ -46,20 +47,20 @@ public class AddressDto {
 	this.identity = identity;
     }
 
-    public String getIdentification() {
-	return identification;
+    public String getStreet() {
+	return street;
     }
 
-    public void setIdentification(String identification) {
-	this.identification = identification;
+    public void setStreet(String street) {
+	this.street = street;
     }
 
-    public String getLocalisationComplement() {
-	return localisationComplement;
+    public String getStreetComplement() {
+	return streetComplement;
     }
 
-    public void setLocalisationComplement(String localisationComplement) {
-	this.localisationComplement = localisationComplement;
+    public void setStreetComplement(String streetComplement) {
+	this.streetComplement = streetComplement;
     }
 
     public String getLabel() {
@@ -70,42 +71,41 @@ public class AddressDto {
 	this.label = label;
     }
 
-    public String getDistributionServices() {
-	return distributionServices;
+    public String getBuilding() {
+	return building;
     }
 
-    public void setDistributionServices(String distributionServices) {
-	this.distributionServices = distributionServices;
+    public void setBuilding(String building) {
+	this.building = building;
     }
 
-    /**
-     * @param locality
-     */
+    public Locality getLocality() {
+	return locality;
+    }
+
     public void setLocality(Locality locality) {
 	this.locality = locality;
     }
 
     /**
-     * @return
+     * @param type
+     * @param identity
+     * @param street
+     * @param streetComplement
+     * @param label
+     * @param building
+     * @param locality
      */
-    @Override
-    public String toString() {
-	StringBuilder builder = new StringBuilder();
-	builder.append("AddressDto [type=");
-	builder.append(type);
-	builder.append(", identity=");
-	builder.append(identity);
-	builder.append(", identification=");
-	builder.append(identification);
-	builder.append(", localisationComplement=");
-	builder.append(localisationComplement);
-	builder.append(", label=");
-	builder.append(label);
-	builder.append(", distributionServices=");
-	builder.append(distributionServices);
-	builder.append(", locality=");
-	builder.append(locality);
-	builder.append("]");
-	return builder.toString();
+    public AddressDto(Types type, @NotNull String identity,
+	    @NotNull String street, String streetComplement,
+	    @NotNull String label, String building, Locality locality) {
+	super();
+	this.type = type;
+	this.identity = identity;
+	this.street = street;
+	this.streetComplement = streetComplement;
+	this.label = label;
+	this.building = building;
+	this.locality = locality;
     }
 }

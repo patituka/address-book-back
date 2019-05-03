@@ -8,7 +8,6 @@ import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -51,7 +50,7 @@ public class LocalityServiceImpl implements LocalityService {
 
     /**
      * @param zipCode
-     * @return
+     * @return city by zipCode
      */
     @Override
     public Optional<List<LocalityDto>> getCityList(String zipCode) {
@@ -61,11 +60,15 @@ public class LocalityServiceImpl implements LocalityService {
 	return Optional.of(Collections.unmodifiableList(dtos));
     }
 
+    /**
+     * @param page
+     * @param size
+     * @return list of localities
+     */
     @Override
     public Optional<List<LocalityDto>> getAll(int page, int size) {
 	PageRequest pageReq = PageRequest.of(page, size);
-	Page<Locality> localities = repository.findAll(pageReq);
-	List<Locality> list = localities.getContent();
+	List<Locality> list = repository.findAll(pageReq).getContent();
 	List<LocalityDto> dtos = ObjectMapperUtils.mapAll(list,
 		LocalityDto.class);
 	return Optional.of(Collections.unmodifiableList(dtos));

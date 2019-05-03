@@ -50,7 +50,7 @@ public class AdminController {
 	    @PathVariable int page, @PathVariable int size) {
 	Optional<List<LocalityDto>> listOptional = service.getAll(page, size);
 	return listOptional.isPresent()
-		? new ResponseEntity<>(listOptional.get(), HttpStatus.CREATED)
+		? new ResponseEntity<>(listOptional.get(), HttpStatus.OK)
 		: new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
     }
 }

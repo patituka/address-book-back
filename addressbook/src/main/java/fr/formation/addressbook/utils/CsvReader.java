@@ -64,17 +64,12 @@ public class CsvReader {
 	    coordinateY = 0.0;
 	} else {
 	    coordinates = data[5].split(",");
-	    coordinateX = Double.parseDouble(coordinates[0]);
-	    coordinateY = Double.parseDouble(coordinates[1]);
+	    coordinateX = Double.valueOf(coordinates[0]);
+	    coordinateY = Double.valueOf(coordinates[1]);
 	}
 	return new Locality(zipCode, city, coordinateX, coordinateY);
     }
 
-    /**
-     * @param path
-     * @param entity
-     * @return
-     */
     public static List<?> csvToEntity(String path, String entity) {
 	List<Class<?>> list = new ArrayList<>();
 	Path pathToFile = Paths.get(path);
