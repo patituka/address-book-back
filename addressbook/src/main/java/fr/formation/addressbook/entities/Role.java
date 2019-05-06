@@ -3,13 +3,22 @@ package fr.formation.addressbook.entities;
 import org.springframework.security.core.GrantedAuthority;
 
 /**
- * @author Administrateur
+ * @author Patricia
  */
 public enum Role implements GrantedAuthority {
-    ROLE_ADMIN, ROLE_USER, ROLE_CLIENT;
+    USER("ROLE_USER"), ADMIN("ROLE_ADMIN");
 
+    private String authority;
+
+    Role(String authority) {
+	this.authority = authority;
+    }
+
+    /**
+     * @return
+     */
     @Override
     public String getAuthority() {
-	return name();
+	return authority;
     }
 }

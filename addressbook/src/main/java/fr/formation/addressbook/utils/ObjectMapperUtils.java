@@ -71,7 +71,7 @@ public class ObjectMapperUtils {
 
     /**
      * Maps {@code source} to {@code destination}.
-     *
+     * 
      * @param source
      *                    object to map from
      * @param destination

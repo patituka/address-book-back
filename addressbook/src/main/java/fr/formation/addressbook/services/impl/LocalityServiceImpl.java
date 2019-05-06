@@ -1,5 +1,6 @@
 package fr.formation.addressbook.services.impl;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import fr.formation.addressbook.dtos.LocalityDto;
 import fr.formation.addressbook.entities.Locality;
+import fr.formation.addressbook.models.CsvResponse;
 import fr.formation.addressbook.repositories.LocalityRepository;
 import fr.formation.addressbook.services.LocalityService;
 import fr.formation.addressbook.utils.CsvProperties;
@@ -41,11 +43,16 @@ public class LocalityServiceImpl implements LocalityService {
      * @return
      */
     @Override
-    public Optional<List<Locality>> saveAll() {
+    public Optional<CsvResponse> saveAll() {
+	CsvResponse response = new CsvResponse();
 	repository.deleteAll();
+	response.setStart(LocalDateTime.now());
 	List<Locality> list = repository
 		.saveAll(CsvReader.readCsvFile(properties.getCsvUrl()));
-	return Optional.of(list);
+	response.setEnd(LocalDateTime.now());
+	response.setDuration(response.getStart().compareTo(response.getEnd()));
+	response.setRowNumber(list.size());
+	return Optional.of(response);
     }
 
     /**

@@ -10,6 +10,7 @@ import javax.persistence.ManyToOne;
  * @author Administrateur
  */
 @Entity
+@SuppressWarnings("javadoc")
 public class Address extends AbstractEntity {
 
     /**
@@ -107,7 +108,6 @@ public class Address extends AbstractEntity {
     public Address(Types type, String identity, String street,
 	    String streetComplement, String label, String building,
 	    Locality locality) {
-	super();
 	this.type = type;
 	this.identity = identity;
 	this.street = street;
@@ -115,6 +115,9 @@ public class Address extends AbstractEntity {
 	this.label = label;
 	this.building = building;
 	this.locality = locality;
+    }
+
+    public Address() {
     }
 
     /**

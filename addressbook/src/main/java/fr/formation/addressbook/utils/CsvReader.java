@@ -29,7 +29,6 @@ public class CsvReader {
      * @return
      */
     public static List<Locality> readCsvFile(String path) {
-	LOGGER.info("CSV readed is loading");
 	List<Locality> localities = new ArrayList<>();
 	Path pathToFile = Paths.get(path);
 	try (BufferedReader br = Files.newBufferedReader(pathToFile,
@@ -71,6 +70,7 @@ public class CsvReader {
     }
 
     public static List<?> csvToEntity(String path, String entity) {
+	long rowCount = 0;
 	List<Class<?>> list = new ArrayList<>();
 	Path pathToFile = Paths.get(path);
 	BufferedReader br;
