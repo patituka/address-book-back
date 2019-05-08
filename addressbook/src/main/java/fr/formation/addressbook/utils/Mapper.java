@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
 import fr.formation.addressbook.dtos.LocalityDto;
@@ -45,7 +46,8 @@ public final class Mapper {
 	    Page<Locality> page) {
 	List<LocalityDto> localityListDto = mapEntityListIntoDto(
 		page.getContent());
-	return null;
+	return new PageImpl<>(localityListDto, pageable,
+		localityListDto.size());
 	// new PageWrapper<LocalityDto>(localityListDto, pageable,
 	// page.getTotalElements());
     }
